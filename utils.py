@@ -1,3 +1,5 @@
+
+
 """
 This class is a calculator that performs arithmatic oparation on two numbers.
 
@@ -13,32 +15,63 @@ class Calculator():
     
     def __init__(self,round_digits):
         self.rounding_digits = round_digits
+       
         
     def addtion(self,a,b):
-        return 0
+        sum = round(a + b, self.rounding_digits)
+        return sum
+
     def subtraction(self,a,b):
-        return 0
+        subtract = round(a - b,  self.rounding_digits)
+        return subtract
+
     def multiplication(self,a,b):
-        return 0
-    def division(self,a,b):
-        return 0
+        multiply = round(a * b, self.rounding_digits)
+        return multiply
     
+    def division(self,a,b):
+        divide = round(a / b,self.rounding_digits)
+        return divide
+    
+
     @property
     def round_digits(self):
         return self.rounding_digits
-    
+
     def set_ound_digits(self,digits):
         self.rounding_digits = digits
+
+calc0 = Calculator(0)  
+calc2 = Calculator(2)
+print(calc0.addtion(5, 3))
+print(calc2.subtraction(5.555, 2.222),)
+print(calc2.multiplication(2.345, 3.456))
+print(calc2.division(10, 3))
         
     
 class History():
-    filepath_ = ""
+    filepath_ = "History.txt"
+    
     def __init__(self, filepath):
         self.filepath_ = filepath
         
+    
     def save(self,expression:str):
-        pass
+        with open(self.filepath_, "a") as f:
+            f.write(expression + "\n")
+
+    
     def restore(self)->list[str]:
-        pass
+        list_1 = []
+        with open(self.filepath_, "r") as f:
+
+            for line in f:
+                lines = line.strip()
+                list_1.append(lines)
+            return list_1
+
+
     def clear(self):
-        pass
+        with open(self.filepath_, "w") as f:
+            pass 
+           

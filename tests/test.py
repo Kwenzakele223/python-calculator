@@ -96,3 +96,7 @@ class TestHistory(unittest.TestCase):
         open(self.test_file, "w").close()
         lines = self.history.restore()
         self.assertEqual(lines, [])
+
+
+if __name__ == '__main__':
+    unittest.main()
